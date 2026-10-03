@@ -69,7 +69,7 @@ function IndustriesPage() {
         aside={<p className="max-w-[280px] text-sm leading-relaxed text-background/60">Six sectors. One standard: infrastructure your organisation can rely on.</p>}
       />
 
-      <div id="content" className="mx-auto grid max-w-[1440px] scroll-mt-8 border-t border-editorial-ink/15 px-5 py-8 sm:grid-cols-3 sm:px-10 lg:py-12">
+      <div id="content" className="mx-auto grid max-w-[1440px] scroll-mt-28 border-t border-editorial-ink/15 px-5 py-8 sm:grid-cols-3 sm:px-10 lg:py-12">
         {[["06", "Sectors served"], ["14", "Named clients"], ["24/7", "Managed support"]].map(([value, label]) => (
           <div key={label} className="border-b border-editorial-ink/15 py-5 sm:border-b-0 sm:border-r sm:px-7 sm:first:pl-0 sm:last:border-r-0">
             <CountUp value={value ?? ""} className="font-display text-5xl font-medium text-editorial-red lg:text-6xl" />
@@ -78,7 +78,7 @@ function IndustriesPage() {
         ))}
       </div>
 
-      <section className="py-20 lg:py-28">
+      <section id="sectors" className="scroll-mt-28 py-20 lg:py-28">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-10">
           <div className="max-w-3xl">
             <Eyebrow>Where we work</Eyebrow>
@@ -108,7 +108,7 @@ function IndustriesPage() {
         </div>
       </section>
 
-      <section id="aml-infrastructure" aria-labelledby="aml-heading" className="scroll-mt-8 border-t border-editorial-ink/15 bg-muted/40 py-20 lg:py-28">
+      <section id="aml-infrastructure" aria-labelledby="aml-heading" className="scroll-mt-28 border-t border-editorial-ink/15 bg-muted/40 py-20 lg:py-28">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-10">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-20">
             <div>
@@ -138,7 +138,7 @@ function IndustriesPage() {
           </div>
           <div className="mt-12 flex flex-wrap items-center justify-between gap-6">
             <p className="max-w-xl text-sm leading-relaxed text-editorial-ink/60">Planning an AML technology upgrade? Let’s map the infrastructure your implementation needs.</p>
-            <Link to="/contact" className="inline-flex items-center gap-3 border-b border-editorial-red pb-1 font-medium text-editorial-red transition hover:text-editorial-blue">Discuss your requirements <ArrowUpRight size={18} /></Link>
+            <Link to="/contact" hash="content" className="inline-flex items-center gap-3 border-b border-editorial-red pb-1 font-medium text-editorial-red transition hover:text-editorial-blue">Discuss your requirements <ArrowUpRight size={18} /></Link>
           </div>
         </div>
       </section>
@@ -151,7 +151,7 @@ function IndustriesPage() {
           </div>
           <div>
             <p className="max-w-lg text-base leading-relaxed text-background/65">Our portfolio spans organisations of every size and sector across Nigeria. Whatever your operational challenge, our engineers will help define a practical path forward.</p>
-            <Link to="/contact" className="group mt-9 inline-flex items-center gap-4 rounded-full bg-signal py-1.5 pl-7 pr-1.5 text-lg text-signal-foreground transition hover:bg-signal/90">
+            <Link to="/contact" hash="content" className="group mt-9 inline-flex items-center gap-4 rounded-full bg-signal py-1.5 pl-7 pr-1.5 text-lg text-signal-foreground transition hover:bg-signal/90">
               Speak with an expert <span className="grid size-[52px] place-items-center rounded-full bg-background text-signal transition group-hover:rotate-45"><ArrowUpRight size={20} /></span>
             </Link>
           </div>

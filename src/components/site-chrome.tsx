@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import logo from "../assets/fastspeed-logo.png";
+import logo from "../../logo/Logo.svg";
 
 const navItems = [
   { label: "Solutions", to: "/solutions" as const },
@@ -16,12 +16,8 @@ export function SiteHeader() {
 
   return (
     <header className="animate-fade-up sticky top-4 z-50 flex min-h-16 items-center justify-between rounded-xl border border-glass-border bg-glass px-4 shadow-glass backdrop-blur-xl sm:px-6">
-      <Link to="/" className="flex items-center gap-3" aria-label="Fastspeed Solutions home">
-        <img src={logo} alt="" width={54} height={47} className="h-10 w-auto" />
-        <div>
-          <p className="font-display text-base font-semibold leading-none">Fastspeed</p>
-          <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/50">Solutions</p>
-        </div>
+      <Link to="/" className="flex items-center" aria-label="Fastspeed Solutions home">
+        <img src={logo} alt="Fastspeed Solutions" width={187} height={44} className="h-10 w-auto" />
       </Link>
 
       <nav className="hidden items-center gap-7 text-sm font-medium text-ink/70 lg:flex" aria-label="Main navigation">
@@ -44,12 +40,13 @@ export function SiteHeader() {
       </nav>
 
       <div className="flex items-center gap-2">
-        <a
-          href="/#contact"
+        <Link
+          to="/contact"
+          hash="content"
           className="hidden rounded-lg bg-signal px-4 py-2.5 text-sm font-semibold text-signal-foreground shadow-lg shadow-signal/20 transition hover:bg-signal/90 sm:inline-flex"
         >
           Book a consultation
-        </a>
+        </Link>
         <button
           type="button"
           onClick={() => setMenuOpen((open) => !open)}
@@ -87,13 +84,14 @@ export function SiteHeader() {
               </a>
             ),
           )}
-          <a
-            href="/#contact"
+          <Link
+            to="/contact"
+            hash="content"
             onClick={() => setMenuOpen(false)}
             className="mt-1 rounded-lg bg-signal px-3 py-3 text-center text-sm font-semibold text-signal-foreground"
           >
             Book a consultation
-          </a>
+          </Link>
         </nav>
       )}
     </header>
@@ -106,8 +104,7 @@ export function SiteFooter() {
       <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <div className="flex items-center gap-3">
-            <img src={logo} alt="" width={42} height={36} className="h-9 w-auto" />
-            <span className="font-display text-lg font-semibold">Fastspeed Solutions</span>
+            <img src={logo} alt="Fastspeed Solutions" width={187} height={44} className="h-10 w-auto" />
           </div>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink/55">
             Business transformation, infrastructure and automation for organisations across Nigeria.
@@ -136,9 +133,9 @@ export function SiteFooter() {
             <a href="/#approach" className="hover:text-brand">
               Why Fastspeed
             </a>
-            <a href="/#contact" className="hover:text-brand">
+            <Link to="/contact" hash="content" className="hover:text-brand">
               Contact
-            </a>
+            </Link>
           </nav>
         </div>
         <div className="lg:col-span-3">

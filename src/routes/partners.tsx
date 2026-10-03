@@ -3,21 +3,10 @@ import { ArrowUpRight, ShieldCheck, Handshake, BadgeCheck } from "lucide-react";
 import { PageHero, Eyebrow, InnerFooter } from "../components/inner-chrome";
 import { CountUp, ScrollReveal } from "../components/motion-details";
 import heroImage from "../assets/partners-hero.jpg";
-import ciscoLogo from "../assets/partners/cisco.png";
-import fortinetLogo from "../assets/partners/fortinet.png";
-import huaweiLogo from "../assets/partners/huawei.png";
-import microsoftLogo from "../assets/partners/microsoft.png";
-import dellLogo from "../assets/partners/dell.png";
-import hpLogo from "../assets/partners/hp.png";
-import oracleLogo from "../assets/partners/oracle.png";
-import lenovoLogo from "../assets/partners/lenovo.png";
-import vmwareLogo from "../assets/partners/vmware.png";
-import ibmLogo from "../assets/partners/ibm.png";
-import emcLogo from "../assets/partners/emc.png";
-import apcLogo from "../assets/partners/apc.png";
-import commscopeLogo from "../assets/partners/commscope.png";
-import netscoutLogo from "../assets/partners/netscout.png";
-import arrayLogo from "../assets/partners/array.png";
+const partnerLogoFiles = import.meta.glob<string>("../../Partners Logo/LOGO-*.png", {
+  eager: true,
+  import: "default",
+});
 
 export const Route = createFileRoute("/partners")({
   head: () => ({
@@ -33,23 +22,28 @@ export const Route = createFileRoute("/partners")({
   component: PartnersPage,
 });
 
-const partners = [
-  { name: "Cisco", logo: ciscoLogo, focus: "Networking & collaboration" },
-  { name: "Fortinet", logo: fortinetLogo, focus: "Cybersecurity" },
-  { name: "Huawei", logo: huaweiLogo, focus: "Enterprise infrastructure" },
-  { name: "Microsoft", logo: microsoftLogo, focus: "Cloud & productivity" },
-  { name: "Dell", logo: dellLogo, focus: "Compute & storage" },
-  { name: "HP", logo: hpLogo, focus: "Hardware & print" },
-  { name: "Oracle", logo: oracleLogo, focus: "Database & cloud" },
-  { name: "Lenovo", logo: lenovoLogo, focus: "Endpoints & servers" },
-  { name: "VMware", logo: vmwareLogo, focus: "Virtualisation" },
-  { name: "IBM", logo: ibmLogo, focus: "Enterprise systems" },
-  { name: "Dell EMC", logo: emcLogo, focus: "Storage & data protection" },
-  { name: "APC", logo: apcLogo, focus: "Power & cooling" },
-  { name: "CommScope", logo: commscopeLogo, focus: "Structured cabling" },
-  { name: "NETSCOUT", logo: netscoutLogo, focus: "Network assurance" },
-  { name: "Array Networks", logo: arrayLogo, focus: "Application delivery" },
-];
+const partnerNameOverrides: Record<string, string> = {
+  "AB-Microfinance-Bank-Nigeria": "AB Microfinance Bank Nigeria",
+  "GTBank": "GTBank",
+  "NETSCOUT": "NETSCOUT",
+  "NAHCoAviance": "NAHCO Aviance",
+  "NPF": "Nigeria Police Force",
+  "LSETF": "Lagos State Employment Trust Fund",
+  "EMC": "Dell EMC",
+  "HP": "HP",
+  "APC": "APC",
+  "IBM": "IBM",
+  "MTN": "MTN",
+  "DANE": "DANE",
+};
+
+const partners = Object.entries(partnerLogoFiles)
+  .sort(([first], [second]) => first.localeCompare(second))
+  .map(([path, logo]) => {
+    const baseName = path.split("/").pop()?.replace(/^LOGO-/, "").replace(/\.png$/i, "") ?? "Partner";
+    const name = partnerNameOverrides[baseName] ?? baseName.replace(/-/g, " ");
+    return { name, logo };
+  });
 
 const principles = [
   { icon: Handshake, title: "Direct OEM relationships", body: "Strong partnerships with major OEMs let us source genuine technology at the most cost-effective prices." },
@@ -66,11 +60,11 @@ function PartnersPage() {
         eyebrow="Technology partners"
         title="World-class technology, expertly deployed."
         intro="We work directly with the world's leading technology manufacturers to bring genuine, fully supported solutions to organisations across Nigeria."
-        aside={<p className="max-w-[280px] text-sm leading-relaxed text-background/60">Fifteen global OEMs. One accountable local partner.</p>}
+        aside={<p className="max-w-[280px] text-sm leading-relaxed text-background/60">{partners.length} organisations represented. One accountable local partner.</p>}
       />
 
-      <div id="content" className="mx-auto grid max-w-[1440px] scroll-mt-8 border-t border-editorial-ink/15 px-5 py-8 sm:grid-cols-3 sm:px-10 lg:py-12">
-        {[["15", "Global partners"], ["100%", "Genuine licensing"], ["24/7", "Backed support"]].map(([value, label]) => (
+      <div id="content" className="mx-auto grid max-w-[1440px] scroll-mt-28 border-t border-editorial-ink/15 px-5 py-8 sm:grid-cols-3 sm:px-10 lg:py-12">
+        {[[String(partners.length), "Partner organisations"], ["100%", "Genuine licensing"], ["24/7", "Backed support"]].map(([value, label]) => (
           <div key={label} className="border-b border-editorial-ink/15 py-5 sm:border-b-0 sm:border-r sm:px-7 sm:first:pl-0 sm:last:border-r-0">
             <CountUp value={value ?? ""} className="font-display text-5xl font-medium text-editorial-red lg:text-6xl" />
             <p className="mt-2 text-sm text-editorial-ink/60">{label}</p>
@@ -82,14 +76,13 @@ function PartnersPage() {
         <div className="mx-auto max-w-[1440px] px-5 sm:px-10">
           <div className="max-w-3xl">
             <Eyebrow>The portfolio</Eyebrow>
-            <h2 className="mt-5 max-w-[18ch] font-display text-4xl font-medium leading-[1.1] sm:text-5xl lg:text-[60px]">The names behind the work.</h2>
+            <h2 className="mt-5 max-w-[18ch] font-display text-4xl font-medium leading-[1.1] sm:text-5xl lg:text-[60px]">The names behind<br />the work.</h2>
           </div>
           <div className="mt-14 grid grid-cols-2 border-l border-t border-editorial-ink/15 sm:grid-cols-3 lg:grid-cols-5">
             {partners.map((partner) => (
               <ScrollReveal key={partner.name} delay={(partners.indexOf(partner) % 5) * 65} className="border-b border-r border-editorial-ink/15">
-                <div className="group flex min-h-40 flex-col items-center justify-center gap-4 px-5 py-8 transition hover:bg-muted/60">
-                  <img src={partner.logo} alt={`${partner.name} logo`} loading="lazy" className="h-14 w-full max-w-32 object-contain grayscale transition group-hover:grayscale-0 sm:h-16" />
-                  <span className="text-center font-mono text-[11px] uppercase tracking-wide text-editorial-ink/50">{partner.focus}</span>
+                <div className="group flex min-h-40 items-center justify-center px-5 py-8 transition hover:bg-muted/60">
+                  <img src={partner.logo} alt={`${partner.name} logo`} loading="lazy" className="h-14 w-full max-w-36 object-contain transition-transform duration-300 group-hover:scale-105 sm:h-16" />
                 </div>
               </ScrollReveal>
             ))}
@@ -101,7 +94,7 @@ function PartnersPage() {
         <div className="mx-auto max-w-[1440px] px-5 sm:px-10">
           <div className="max-w-3xl">
             <Eyebrow>Why it matters</Eyebrow>
-            <h2 className="mt-5 max-w-[18ch] font-display text-4xl font-medium leading-[1.1] sm:text-5xl lg:text-[60px]">Partnerships that protect your investment.</h2>
+            <h2 className="mt-5 max-w-none font-display text-4xl font-medium leading-[1.1] sm:text-5xl lg:text-[60px]"><span className="block">Partnerships that</span><span className="block">protect your investment.</span></h2>
           </div>
           <div className="mt-14 grid gap-px overflow-hidden border border-editorial-ink/15 bg-editorial-ink/15 sm:grid-cols-3">
             {principles.map((p) => (
@@ -121,11 +114,11 @@ function PartnersPage() {
         <div className="mx-auto grid max-w-[1440px] gap-10 px-5 sm:px-10 lg:grid-cols-[1fr_1fr] lg:items-end lg:gap-24">
           <div>
             <Eyebrow light>Source with confidence</Eyebrow>
-            <h2 className="mt-6 max-w-[16ch] font-display text-4xl font-medium leading-[1.08] sm:text-5xl">Need a specific platform or vendor?</h2>
+            <h2 className="mt-6 max-w-none font-display text-4xl font-medium leading-[1.08] sm:text-5xl">Need a specific platform<br />or vendor?</h2>
           </div>
           <div>
             <p className="max-w-lg text-base leading-relaxed text-background/65">Tell us what you're trying to achieve. We'll recommend the right technology from our partner portfolio — and stand behind it end to end.</p>
-            <Link to="/contact" className="group mt-9 inline-flex items-center gap-4 rounded-full bg-signal py-1.5 pl-7 pr-1.5 text-lg text-signal-foreground transition hover:bg-signal/90">
+            <Link to="/contact" hash="content" className="group mt-9 inline-flex items-center gap-4 rounded-full bg-signal py-1.5 pl-7 pr-1.5 text-lg text-signal-foreground transition hover:bg-signal/90">
               Speak with an expert <span className="grid size-[52px] place-items-center rounded-full bg-background text-signal transition group-hover:rotate-45"><ArrowUpRight size={20} /></span>
             </Link>
           </div>
