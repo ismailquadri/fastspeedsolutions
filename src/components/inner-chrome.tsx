@@ -7,7 +7,7 @@ import { MobileMenuOverlay, MobileMenuToggle, useHeroParallax } from "./motion-d
 // Shared chrome for inner pages — mirrors the homepage hero/header/footer styling.
 
 const nav = [
-  { label: "Home", to: "/" },
+  { label: "Home", to: "/", hash: "top" },
   { label: "About Us", to: "/about" },
   { label: "Services", to: "/solutions", caret: true },
   { label: "Case Studies", to: "/case-studies" },
@@ -26,23 +26,23 @@ export function Eyebrow({ children, light = false }: { children: ReactNode; ligh
 
 export function InnerHeader({ light = false }: { light?: boolean }) {
   const [open, setOpen] = useState(false);
-  const linkCls = `relative py-3 transition ${light ? "hover:text-signal" : "hover:text-background"}`;
-  const activeCls = "!text-signal after:absolute after:-left-5 after:-right-5 after:-bottom-1.5 after:h-0.5 after:bg-signal";
+  const linkCls = `relative flex items-center py-0 transition ${light ? "hover:text-signal" : "hover:text-background"}`;
+  const activeCls = "!text-signal after:absolute after:-left-5 after:-right-5 after:-bottom-7 after:h-0.5 after:bg-signal";
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 flex w-full items-center justify-between gap-5 border-b px-5 py-6 backdrop-blur-xl sm:px-10 lg:px-6 lg:py-7 xl:px-[22px] ${light ? "border-editorial-ink/10 bg-background/95" : "border-background/10 bg-editorial-ink/80"}`}>
+    <header className={`relative z-20 flex w-full items-center justify-between gap-5 border-b px-5 py-6 sm:px-10 lg:px-6 lg:py-7 xl:px-[22px] ${light ? "border-editorial-ink/10" : "border-background/10"}`}>
       <Link to="/" aria-label="Fastspeed Solutions home" className="flex shrink-0 items-center">
         <img src={logo} alt="Fastspeed Solutions" width={187} height={44} className="h-10 w-auto lg:h-11" />
       </Link>
-      <nav aria-label="Main navigation" className={`hidden items-center gap-11 text-[15px] font-normal lg:flex xl:mr-24 ${light ? "text-editorial-ink/75" : "text-background/80"}`}>
+      <nav aria-label="Main navigation" className={`hidden self-stretch items-stretch gap-11 text-[15px] font-normal lg:flex xl:mr-24 ${light ? "text-editorial-ink/75" : "text-background/80"}`}>
         {nav.map((item) => (
-          <Link key={item.label} to={item.to} className={`${linkCls} ${"caret" in item ? "inline-flex items-center gap-1.5" : ""}`} activeOptions={{ exact: item.to === "/" }} activeProps={{ className: activeCls }}>
+          <Link key={item.label} to={item.to} hash={item.hash} className={`${linkCls} ${"caret" in item ? "inline-flex items-center gap-1.5" : ""}`} activeOptions={{ exact: item.to === "/" }} activeProps={{ className: activeCls }}>
             {item.label} {"caret" in item && <ChevronDown size={16} />}
           </Link>
         ))}
       </nav>
       <Link to="/contact" hash="content" className={`hidden shrink-0 rounded-full px-8 py-3.5 text-[15px] font-medium transition hover:bg-signal hover:text-signal-foreground lg:inline-flex ${light ? "bg-editorial-ink text-background" : "bg-background text-ink"}`}>Talk to us</Link>
       <MobileMenuToggle open={open} onToggle={() => setOpen(!open)} controls="inner-mobile-nav" light={light} />
-      {open && <MobileMenuOverlay controls="inner-mobile-nav" items={nav.map(({ label, to }) => ({ label, to }))} onClose={() => setOpen(false)} />}
+      {open && <MobileMenuOverlay controls="inner-mobile-nav" items={nav.map(({ label, to, hash }) => ({ label, to, hash }))} onClose={() => setOpen(false)} />}
     </header>
   );
 }
@@ -51,7 +51,6 @@ export function EditorialIntro({ eyebrow, title, intro, index, children }: { eye
   return (
     <>
       <InnerHeader light />
-      <div aria-hidden="true" className="h-[88px] shrink-0 lg:h-[100px]" />
       <section className="mx-auto max-w-[1440px] px-5 pb-14 pt-10 sm:px-10 lg:pb-20 lg:pt-16">
         <div className="border-t border-editorial-ink pt-6">
           <div className="flex items-center justify-between gap-4 text-xs font-semibold uppercase tracking-widest text-signal"><span>{eyebrow}</span><span className="font-mono text-editorial-ink/45">{index} / Fastspeed</span></div>
@@ -70,10 +69,9 @@ export function PageHero({ image, imageAlt, eyebrow, title, intro, aside, compac
   const { sectionRef, imageRef, contentRef } = useHeroParallax();
   return (
     <section ref={sectionRef} className={`relative flex flex-col overflow-hidden bg-editorial-ink text-background ${compact ? "min-h-[590px] lg:min-h-[650px]" : "min-h-[680px] lg:min-h-[760px]"}`}>
-      <img ref={imageRef} src={image} alt={imageAlt} width={1920} height={1088} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-[35%_center] lg:object-center" />
+      <img ref={imageRef} src={image} alt={imageAlt} width={1920} height={1088} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-[72%_center] sm:object-[64%_center] lg:object-center" />
       <div className="inner-hero-overlay absolute inset-0" aria-hidden="true" />
       <InnerHeader />
-      <div aria-hidden="true" className="h-[88px] shrink-0 lg:h-[100px]" />
       <div ref={contentRef} className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-end px-5 pb-12 pt-16 will-change-transform sm:px-10 lg:pb-14">
         <div className="animate-fade-up">
           <Eyebrow light>{eyebrow}</Eyebrow>

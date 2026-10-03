@@ -63,7 +63,7 @@ function PartnersPage() {
         aside={<p className="max-w-[280px] text-sm leading-relaxed text-background/60">{partners.length} organisations represented. One accountable local partner.</p>}
       />
 
-      <div id="content" className="mx-auto grid max-w-[1440px] scroll-mt-28 border-t border-editorial-ink/15 px-5 py-8 sm:grid-cols-3 sm:px-10 lg:py-12">
+      <div id="content" className="mx-auto grid max-w-[1440px] scroll-mt-8 border-t border-editorial-ink/15 px-5 py-8 sm:grid-cols-3 sm:px-10 lg:py-12">
         {[[String(partners.length), "Partner organisations"], ["100%", "Genuine licensing"], ["24/7", "Backed support"]].map(([value, label]) => (
           <div key={label} className="border-b border-editorial-ink/15 py-5 sm:border-b-0 sm:border-r sm:px-7 sm:first:pl-0 sm:last:border-r-0">
             <CountUp value={value ?? ""} className="font-display text-5xl font-medium text-editorial-red lg:text-6xl" />

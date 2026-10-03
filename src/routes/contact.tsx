@@ -67,7 +67,7 @@ function ContactPage() {
       <PageHero compact image={heroImage} imageAlt="Illustration of consultants and a client discussing infrastructure plans" eyebrow="Contact Fastspeed" title="Let's build what's next." intro="Tell us what your organisation needs. Our team will help define a practical path from requirements to resilient delivery." />
       <div className="mx-auto flex max-w-[1440px] flex-wrap gap-8 px-5 py-8 sm:px-10 lg:py-10"><a href="tel:+2348066659119" className="inline-flex items-center gap-3 border-b border-editorial-ink pb-1 text-lg transition hover:text-editorial-red"><Phone size={19} /> +234 (0) 806 665 9119</a><a href="mailto:sales@fastspeedsolutions.com" className="inline-flex items-center gap-3 border-b border-editorial-ink pb-1 text-lg transition hover:text-editorial-red"><Mail size={19} /> Email sales <ArrowUpRight size={18} /></a></div>
 
-      <section id="content" className="scroll-mt-28 border-t border-editorial-ink/10 py-20 lg:py-28">
+      <section id="content" className="scroll-mt-8 border-t border-editorial-ink/10 py-20 lg:py-28">
         <div className="mx-auto grid max-w-[1440px] gap-14 px-5 sm:px-10 lg:grid-cols-[1.4fr_0.6fr] lg:gap-24">
           <div>
             <Eyebrow>Send us a message</Eyebrow>

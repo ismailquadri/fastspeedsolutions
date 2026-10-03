@@ -85,7 +85,7 @@ function SolutionsPage() {
   return (
     <div className="overflow-x-hidden bg-background font-body text-editorial-ink">
       <PageHero image={heroImage} imageAlt="Illustration of an engineer working with data centre network equipment" eyebrow="Fastspeed services" title={<>Every layer of<br />enterprise IT.</>} intro="From the physical layer to the cloud, we simplify complex technology and make it work for your organisation." />
-      <section id="content" aria-label="Explore solutions" className="mx-auto max-w-[1440px] scroll-mt-28 px-5 pb-16 pt-10 sm:px-10 lg:pb-20 lg:pt-16">
+      <section id="content" aria-label="Explore solutions" className="mx-auto max-w-[1440px] scroll-mt-8 px-5 pb-16 pt-10 sm:px-10 lg:pb-20 lg:pt-16">
         <div className="grid border-t border-editorial-ink/15 md:grid-cols-2 md:gap-x-16">
           {solutions.map((solution) => (
             <a key={solution.id} href={`#${solution.id}`} className="group relative flex min-h-48 flex-col justify-between border-b border-editorial-ink/15 py-7 transition-colors hover:border-editorial-red lg:min-h-56 lg:py-9">
@@ -106,7 +106,7 @@ function SolutionsPage() {
 
       <section aria-label="Solutions in detail">
         {solutions.map((solution, index) => (
-          <article id={solution.id} key={solution.id} className={`scroll-mt-28 border-b border-editorial-ink/10 py-16 lg:py-24 ${index % 2 ? "bg-muted/40" : "bg-background"}`}>
+          <article id={solution.id} key={solution.id} className={`scroll-mt-8 border-b border-editorial-ink/10 py-16 lg:py-24 ${index % 2 ? "bg-muted/40" : "bg-background"}`}>
             <div className="mx-auto grid max-w-[1440px] gap-10 px-5 sm:px-10 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:gap-20">
               <div className="flex flex-col justify-between"><div><span className="font-mono text-sm text-editorial-blue">{solution.number} / 0{solutions.length}</span><h2 className="mt-5 font-display text-4xl font-medium leading-[1.05] sm:text-5xl lg:text-6xl">{solution.title}</h2><p className="mt-6 max-w-md text-lg leading-relaxed text-editorial-ink/70">{solution.summary}</p>{solution.id === "cybersecurity" && <Link to="/industries" hash="aml-infrastructure" className="mt-6 inline-flex items-center gap-2 border-b border-editorial-red pb-1 text-sm font-medium text-editorial-red transition hover:text-editorial-blue">AML infrastructure for financial services <ArrowUpRight size={16} /></Link>}</div><Link to="/contact" hash="content" className="mt-8 inline-flex w-fit items-center gap-2 border-b border-editorial-ink pb-1 text-sm font-medium transition hover:border-editorial-red hover:text-editorial-red">Discuss this solution <ArrowUpRight size={18} /></Link></div>
               <div><img src={solution.image} alt={solution.alt} loading="lazy" width={1536} height={1024} className="aspect-[16/9] w-full object-cover" /><ul className="mt-6 grid gap-x-6 border-t border-editorial-ink/15 sm:grid-cols-2">{solution.capabilities.map((capability) => <li key={capability} className="flex items-start gap-3 border-b border-editorial-ink/15 py-4 text-sm leading-relaxed"><Check size={16} className="mt-0.5 shrink-0 text-editorial-red" />{capability}</li>)}</ul></div>

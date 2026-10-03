@@ -13,6 +13,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { PageCurtain } from "../components/page-curtain";
+import { useLenisScroll } from "../components/motion-details";
 
 function NotFoundComponent() {
   return (
@@ -124,6 +125,7 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  useLenisScroll();
 
   return (
     <QueryClientProvider client={queryClient}>

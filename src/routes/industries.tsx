@@ -69,7 +69,7 @@ function IndustriesPage() {
         aside={<p className="max-w-[280px] text-sm leading-relaxed text-background/60">Six sectors. One standard: infrastructure your organisation can rely on.</p>}
       />
 
-      <div id="content" className="mx-auto grid max-w-[1440px] scroll-mt-28 border-t border-editorial-ink/15 px-5 py-8 sm:grid-cols-3 sm:px-10 lg:py-12">
+      <div id="content" className="mx-auto grid max-w-[1440px] scroll-mt-8 border-t border-editorial-ink/15 px-5 py-8 sm:grid-cols-3 sm:px-10 lg:py-12">
         {[["06", "Sectors served"], ["14", "Named clients"], ["24/7", "Managed support"]].map(([value, label]) => (
           <div key={label} className="border-b border-editorial-ink/15 py-5 sm:border-b-0 sm:border-r sm:px-7 sm:first:pl-0 sm:last:border-r-0">
             <CountUp value={value ?? ""} className="font-display text-5xl font-medium text-editorial-red lg:text-6xl" />
@@ -78,7 +78,7 @@ function IndustriesPage() {
         ))}
       </div>
 
-      <section id="sectors" className="scroll-mt-28 py-20 lg:py-28">
+      <section id="sectors" className="scroll-mt-8 py-20 lg:py-28">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-10">
           <div className="max-w-3xl">
             <Eyebrow>Where we work</Eyebrow>
@@ -108,7 +108,7 @@ function IndustriesPage() {
         </div>
       </section>
 
-      <section id="aml-infrastructure" aria-labelledby="aml-heading" className="scroll-mt-28 border-t border-editorial-ink/15 bg-muted/40 py-20 lg:py-28">
+      <section id="aml-infrastructure" aria-labelledby="aml-heading" className="scroll-mt-8 border-t border-editorial-ink/15 bg-muted/40 py-20 lg:py-28">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-10">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-20">
             <div>

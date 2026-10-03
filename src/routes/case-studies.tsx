@@ -35,7 +35,7 @@ function CaseStudiesPage() {
   return (
     <div className="overflow-x-hidden bg-background font-body text-editorial-ink">
       <PageHero image={heroImage} imageAlt="Illustration of a business leader and engineer reviewing network equipment" eyebrow="Selected work" title={<>Work that keeps<br />business moving.</>} intro="A view of the industries in Fastspeed's published client portfolio and the capabilities relevant to them." />
-      <section id="content" aria-label="Client portfolio at a glance" className="mx-auto max-w-[1440px] scroll-mt-28 px-5 pb-16 pt-10 sm:px-10 lg:pb-20 lg:pt-16">
+      <section id="content" aria-label="Client portfolio at a glance" className="mx-auto max-w-[1440px] scroll-mt-8 px-5 pb-16 pt-10 sm:px-10 lg:pb-20 lg:pt-16">
         <div className="grid border-t border-editorial-ink/15 pt-7 sm:grid-cols-3">
           {[['6', 'Financial organisations'], ['3', 'Telecom & network providers'], ['2', 'Manufacturing organisations']].map(([value, label], index) => <ScrollReveal key={label} delay={index * 90} className="border-b border-editorial-ink/15 sm:border-b-0 sm:border-r sm:last:border-r-0"><div className={`py-5 sm:px-7 ${index === 0 ? "sm:pl-0" : ""}`}><CountUp value={value ?? ""} className="font-display text-6xl font-medium text-editorial-red lg:text-7xl" /><p className="mt-2 text-sm text-editorial-ink/60">{label}</p></div></ScrollReveal>)}
         </div>
