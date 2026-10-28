@@ -5,6 +5,7 @@ import logo from "../../logo/Logo.svg";
 
 const navItems = [
   { label: "Solutions", to: "/solutions" as const },
+  { label: "Clients", to: "/clients" as const },
   { label: "Case studies", to: "/case-studies" as const },
   { label: "Industries", href: "/#industries" },
   { label: "Partners", href: "/#partners" },
@@ -20,7 +21,10 @@ export function SiteHeader() {
         <img src={logo} alt="Fastspeed Solutions" width={187} height={44} className="h-10 w-auto" />
       </Link>
 
-      <nav className="hidden items-center gap-7 text-sm font-medium text-ink/70 lg:flex" aria-label="Main navigation">
+      <nav
+        className="hidden items-center gap-7 text-sm font-medium text-ink/70 lg:flex"
+        aria-label="Main navigation"
+      >
         {navItems.map((item) =>
           item.to ? (
             <Link
@@ -104,7 +108,13 @@ export function SiteFooter() {
       <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <div className="flex items-center gap-3">
-            <img src={logo} alt="Fastspeed Solutions" width={187} height={44} className="h-10 w-auto" />
+            <img
+              src={logo}
+              alt="Fastspeed Solutions"
+              width={187}
+              height={44}
+              className="h-10 w-auto"
+            />
           </div>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink/55">
             Business transformation, infrastructure and automation for organisations across Nigeria.
@@ -115,6 +125,9 @@ export function SiteFooter() {
           <nav className="mt-4 grid gap-3 text-sm text-ink/55">
             <Link to="/solutions" className="hover:text-brand">
               Solutions
+            </Link>
+            <Link to="/clients" className="hover:text-brand">
+              Clients
             </Link>
             <Link to="/case-studies" className="hover:text-brand">
               Case studies
