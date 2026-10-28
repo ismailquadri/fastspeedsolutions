@@ -10,13 +10,13 @@ import { ENTERPRISE_CLIENTS } from "../data/partners-and-clients";
 export const Route = createFileRoute("/case-studies")({
   head: () => ({
     meta: [
-      { title: "Case Studies & Client Portfolio | Fastspeed Solutions" },
+      { title: "Case Studies | Fastspeed Solutions" },
       {
         name: "description",
         content:
           "Explore Fastspeed's published client portfolio across financial services, telecoms and manufacturing, and the solutions we offer each sector.",
       },
-      { property: "og:title", content: "Case Studies & Client Portfolio | Fastspeed Solutions" },
+      { property: "og:title", content: "Case Studies | Fastspeed Solutions" },
       {
         property: "og:description",
         content:
@@ -51,7 +51,7 @@ const sectors = [
   {
     number: "03",
     count: "2+",
-    title: "Manufacturing & commerce",
+    title: "Manufacturing organisations",
     detail: "Binatone consumer electronics, Conoil, and commercial distributors across Nigeria.",
     service: "Enterprise hardware",
     href: "/solutions#enterprise-hardware",
@@ -61,13 +61,13 @@ const sectors = [
     count: "2+",
     title: "Aviation & investment firms",
     detail: "NAHCO Aviance airport operations, DANE Investment, and AddyFX.",
-    service: "Enterprise IT & Logistics",
+    service: "Cybersecurity",
     href: "/solutions#cybersecurity",
   },
   {
     number: "05",
     count: "3+",
-    title: "Government & non-profit sector",
+    title: "Government and public sector",
     detail:
       "Lagos State Employment Trust Fund (LSETF), Nigeria Police Force (NPF), and Heartland Alliance.",
     service: "Institutional infrastructure",
@@ -101,7 +101,7 @@ function CaseStudiesPage() {
           {[
             ["6+", "Financial organisations"],
             ["3+", "Telecom & network providers"],
-            ["4", "Critical enterprise sectors"],
+            ["2+", "Manufacturing organisations"],
           ].map(([value, label], index) => (
             <ScrollReveal
               key={label}
@@ -149,7 +149,7 @@ function CaseStudiesPage() {
             </div>
             <div className="mt-16 border-t border-background/20 pt-6">
               <p className="text-sm text-background/55">
-                Relevant industries: finance, telecoms and public sector
+                Relevant industries: finance and telecoms
               </p>
               <Link
                 to="/solutions"
@@ -163,7 +163,6 @@ function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* Sector breakdown */}
       <section aria-labelledby="sectors-title" className="py-20 lg:py-28">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-10">
           <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
@@ -179,12 +178,6 @@ function CaseStudiesPage() {
                 Published client names are grouped by industry. Service links show relevant
                 capabilities, not attributed project results.
               </p>
-              <Link
-                to="/clients"
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-editorial-ink px-5 py-2.5 text-xs font-semibold text-background transition hover:bg-signal hover:text-signal-foreground"
-              >
-                View all client logos <ArrowUpRight size={14} />
-              </Link>
             </div>
             <div className="border-t border-editorial-ink">
               {sectors.map(({ number, count, title, detail, service, href }) => (
@@ -220,7 +213,6 @@ function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* Published Clients with Genuine Logos */}
       <section aria-labelledby="clients-title" className="bg-muted/40 py-20 lg:py-28">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-10">
           <div className="flex flex-wrap items-end justify-between gap-6">
@@ -230,39 +222,25 @@ function CaseStudiesPage() {
                 Organisations in our portfolio.
               </h2>
             </div>
-            <div className="flex items-center gap-4">
-              <p className="max-w-sm text-sm leading-relaxed text-editorial-ink/60">
-                Official logos of organisations across banking, telco, aviation, and public sector.
-              </p>
-              <Link
-                to="/clients"
-                className="hidden rounded-full bg-signal px-4 py-2 text-xs font-semibold text-signal-foreground transition hover:bg-signal/90 sm:inline-flex"
-              >
-                Dedicated Clients Page
-              </Link>
-            </div>
+            <p className="max-w-sm text-sm leading-relaxed text-editorial-ink/60">
+              These names appear in Fastspeed's publicly listed client portfolio.
+            </p>
           </div>
 
-          <div className="mt-12 grid grid-cols-2 border-l border-t border-editorial-ink/20 sm:grid-cols-3 lg:grid-cols-4">
+          <div className="mt-12 grid grid-cols-2 border-l border-t border-editorial-ink/15 sm:grid-cols-3 lg:grid-cols-4">
             {ENTERPRISE_CLIENTS.map((client, i) => (
               <ScrollReveal
                 key={client.name}
-                delay={(i % 4) * 60}
-                className="border-b border-r border-editorial-ink/15 bg-background transition hover:bg-muted/40"
+                delay={(i % 4) * 65}
+                className="border-b border-r border-editorial-ink/15"
               >
-                <div className="flex min-h-36 flex-col items-center justify-center p-6 text-center">
+                <div className="group flex min-h-40 items-center justify-center px-5 py-8 transition hover:bg-muted/60">
                   <img
                     src={client.logo}
                     alt={`${client.name} logo`}
                     loading="lazy"
-                    className="max-h-12 w-auto max-w-[130px] object-contain transition-transform duration-300 hover:scale-105 sm:max-h-14 sm:max-w-[150px]"
+                    className="h-14 w-full max-w-36 object-contain transition-transform duration-300 group-hover:scale-105 sm:h-16"
                   />
-                  <span className="mt-4 font-display text-sm font-medium text-editorial-ink">
-                    {client.name}
-                  </span>
-                  <span className="mt-1 font-mono text-[10px] uppercase text-editorial-blue">
-                    {client.category}
-                  </span>
                 </div>
               </ScrollReveal>
             ))}
