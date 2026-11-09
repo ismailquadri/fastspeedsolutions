@@ -463,7 +463,7 @@ function Homepage() {
           </div>
           <div ref={trustedLogosRef} className="w-full min-w-0 lg:mr-[100px] lg:w-auto">
             <p className="text-left text-xs text-background/55 sm:text-sm lg:text-base">
-              Trusted by 200+ organisations across Nigeria
+              Trusted by 200+ OEMs across Nigeria
             </p>
             <div
               role="group"
