@@ -6,7 +6,6 @@ import {
   ArrowRight,
   ArrowUpRight,
   Check,
-  ChevronDown,
   Server,
   ShieldCheck,
   Database,
@@ -357,9 +356,9 @@ function Homepage() {
             </Link>
             <Link
               to="/solutions"
-              className="relative inline-flex items-center gap-1.5 py-0 transition hover:text-background"
+              className="relative flex items-center py-0 transition hover:text-background"
             >
-              Services <ChevronDown size={16} />
+              Services
             </Link>
             <Link
               to="/clients"

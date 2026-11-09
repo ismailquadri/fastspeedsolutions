@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowDown, ArrowUpRight, ChevronDown } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import logo from "../../logo/Logo.svg";
 import { MobileMenuOverlay, MobileMenuToggle, useHeroParallax } from "./motion-details";
@@ -13,13 +13,12 @@ type NavItem = {
   label: string;
   to: InnerRoute;
   hash?: string;
-  caret?: boolean;
 };
 
 const nav: NavItem[] = [
   { label: "Home", to: "/", hash: "top" },
   { label: "About Us", to: "/about" },
-  { label: "Services", to: "/solutions", caret: true },
+  { label: "Services", to: "/solutions" },
   { label: "Clients", to: "/clients" },
   { label: "Case Studies", to: "/case-studies" },
   { label: "Industries", to: "/industries" },
@@ -64,11 +63,11 @@ export function InnerHeader({ light = false }: { light?: boolean }) {
             key={item.label}
             to={item.to}
             {...(item.hash ? { hash: item.hash } : {})}
-            className={`${linkCls} ${item.caret ? "inline-flex items-center gap-1.5" : ""}`}
+            className={linkCls}
             activeOptions={{ exact: item.to === "/" }}
             activeProps={{ className: activeCls }}
           >
-            {item.label} {item.caret && <ChevronDown size={16} />}
+            {item.label}
           </Link>
         ))}
       </nav>
