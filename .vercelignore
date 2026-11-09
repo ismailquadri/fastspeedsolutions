@@ -1,0 +1,12 @@
+node_modules
+.output
+.git
+.github
+agentic-awesome-skills
+figma-claude-carousel-plugin
+.tanstack
+.nitro
+.vite
+.wrangler
+dist
+dist-ssr
